@@ -1,17 +1,19 @@
 import React from "react";
+import Link from "next/link";
 import { Flex, Group, Select, Button } from "@mantine/core";
 import styled from "styled-components";
 import toast from "react-hot-toast";
 import { AiOutlineFullscreen } from "react-icons/ai";
+import { FaGithub } from "react-icons/fa6";
 import { FiDownload } from "react-icons/fi";
-import { type FileFormat, formats } from "src/enums/file.enum";
-import { SearchInput } from "src/features/editor/Toolbar/SearchInput";
-import { JSONCrackLogo } from "src/layout/JsonCrackLogo";
-import useFile from "src/store/useFile";
-import useModal from "src/store/useModal";
+import { type FileFormat, formats } from "../../../enums/file.enum";
+import { JSONCrackLogo } from "../../../layout/JsonCrackLogo";
+import useFile from "../../../store/useFile";
+import useModal from "../../../store/useModal";
 import { FileMenu } from "./FileMenu";
 import { Logo } from "./Logo";
 import { OptionsMenu } from "./OptionsMenu";
+import { SearchInput } from "./SearchInput";
 import { ToolsMenu } from "./ToolsMenu";
 import { ViewMenu } from "./ViewMenu";
 import { ZoomMenu } from "./ZoomMenu";
@@ -85,15 +87,13 @@ export const Toolbar = ({ isWidget = false }: ToolbarProps) => {
       <Group gap="6" justify="right" w="100%" style={{ flexWrap: "nowrap" }}>
         {!isWidget && (
           <Button
-            component="a"
-            href="https://todiagram.com/?utm_source=jsoncrack&utm_medium=toolbar"
-            target="_blank"
             variant="light"
             color="gray"
             size="compact-sm"
             fz="12"
             fw="600"
             mr="6"
+            onClick={() => setVisible("UpgradeModal", true)}
           >
             JSON Crack v2.0 🔥
           </Button>
@@ -108,6 +108,11 @@ export const Toolbar = ({ isWidget = false }: ToolbarProps) => {
               <FiDownload size="18" />
             </StyledToolElement>
             <ZoomMenu />
+            <Link href="https://github.com/AykutSarac/jsoncrack.com" rel="noopener" target="_blank">
+              <StyledToolElement title="GitHub">
+                <FaGithub size="18" />
+              </StyledToolElement>
+            </Link>
             <OptionsMenu />
             <StyledToolElement title="Fullscreen" $hide={isWidget} onClick={fullscreenBrowser}>
               <AiOutlineFullscreen size="18" />

@@ -86,11 +86,11 @@ export const LovedBy = ({ stars }: LovedByProps) => {
         </Button>
         <Button
           component="a"
-          href="https://todiagram.com"
+          href="https://todiagram.com?utm_source=jsoncrack&utm_medium=loved_by"
           color="#fe5e49"
           leftSection={
             <Image
-              src="https://todiagram.com/logo.svg"
+              src="https://todiagram.com/192.png"
               loading="lazy"
               alt="Todiagram Logo"
               w={14}

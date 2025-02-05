@@ -2,46 +2,51 @@ import debounce from "lodash.debounce";
 import { event as gaEvent } from "nextjs-google-analytics";
 import { toast } from "react-hot-toast";
 import { create } from "zustand";
-import { FileFormat } from "src/enums/file.enum";
-import { isIframe } from "src/lib/utils/helpers";
-import { contentToJson, jsonToContent } from "src/lib/utils/jsonAdapter";
+import { FileFormat } from "../enums/file.enum";
 import useGraph from "../features/editor/views/GraphView/stores/useGraph";
+import { isIframe } from "../lib/utils/helpers";
+import { contentToJson, jsonToContent } from "../lib/utils/jsonAdapter";
 import useConfig from "./useConfig";
 import useJson from "./useJson";
 
 const defaultJson = JSON.stringify(
   {
-    squadName: "Super hero squad",
-    homeTown: "Metro City",
-    formed: 2016,
-    secretBase: "Super tower",
-    active: true,
-    members: [
+    appName: "JSON Crack",
+    author: "Aykut Saraç",
+    launched: 2022,
+    openSource: true,
+    stars: 34633,
+    upgrade: {
+      appName: "ToDiagram",
+      detail: "New powerful JSON editor.",
+      website: "https://todiagram.com",
+      brandColor: "#fe5e49",
+      paid: true,
+    },
+    milestones: [
       {
-        name: "Molecule Man",
-        age: 29,
-        secretIdentity: "Dan Jukes",
-        powers: ["Radiation resistance", "Turning tiny", "Radiation blast"],
+        title: "Launch",
+        year: 2022,
       },
       {
-        name: "Madame Uppercut",
-        age: 39,
-        secretIdentity: "Jane Wilson",
-        powers: ["Million tonne punch", "Damage resistance", "Superhuman reflexes"],
+        title: "10K Stars",
+        date: 2022,
       },
       {
-        name: "Eternal Flame",
-        age: 1000000,
-        secretIdentity: "Unknown",
-        powers: [
-          "Immortality",
-          "Heat Immunity",
-          "Inferno",
-          "Teleportation",
-          "Interdimensional travel",
-        ],
+        title: "20K Stars",
+        date: 2023,
+      },
+      {
+        title: "30K Stars",
+        date: 2024,
       },
     ],
+    social: {
+      github: "https://github.com/AykutSarac/jsoncrack.com",
+      twitter: "https://x.com/jsoncrack",
+      linkedin: "https://linkedin.com/company/todiagram",
+    },
+    images: ["https://jsoncrack.com/assets/192.png"],
   },
   null,
   2

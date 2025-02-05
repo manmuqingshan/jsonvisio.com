@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <p align="center">
   <a href="https://github.com/AykutSarac/jsoncrack.com">
-   <img src="./public/assets/logo.svg" height="50" alt="Logo">
+   <img src="./public/assets/192.png" height="50" alt="Logo">
   </a>
 
   <h1 align="center">JSON Crack</h1>
@@ -98,7 +98,7 @@ Here is what you need to be able to run JSON Crack.
    cd jsoncrack.com
    ```
 
-3. Install packages with yarn
+3. Install packages
 
    ```sh
    pnpm install

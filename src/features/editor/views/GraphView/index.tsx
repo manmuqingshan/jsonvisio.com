@@ -1,17 +1,17 @@
 import React from "react";
-import { LoadingOverlay } from "@mantine/core";
+import { LoadingOverlay, useComputedColorScheme } from "@mantine/core";
 import styled from "styled-components";
 import debounce from "lodash.debounce";
 import { Space } from "react-zoomable-ui";
 import { Canvas } from "reaflow";
 import type { ElkRoot } from "reaflow/dist/layout/useLayout";
 import { useLongPress } from "use-long-press";
-import { CustomNode } from "src/features/editor/views/GraphView/CustomNode";
-import useGraph from "src/features/editor/views/GraphView/stores/useGraph";
-import useToggleHide from "src/hooks/useToggleHide";
-import useConfig from "src/store/useConfig";
+import useToggleHide from "../../../../hooks/useToggleHide";
+import useConfig from "../../../../store/useConfig";
 import { CustomEdge } from "./CustomEdge";
+import { CustomNode } from "./CustomNode";
 import { NotSupported } from "./NotSupported";
+import useGraph from "./stores/useGraph";
 
 const StyledEditorWrapper = styled.div<{ $widget: boolean; $showRulers: boolean }>`
   position: absolute;
@@ -83,6 +83,7 @@ const GraphCanvas = ({ isWidget }: GraphProps) => {
   const centerView = useGraph(state => state.centerView);
   const direction = useGraph(state => state.direction);
   const nodes = useGraph(state => state.nodes);
+  const colorScheme = useComputedColorScheme();
   const edges = useGraph(state => state.edges);
   const [paneWidth, setPaneWidth] = React.useState(2000);
   const [paneHeight, setPaneHeight] = React.useState(2000);
@@ -116,13 +117,14 @@ const GraphCanvas = ({ isWidget }: GraphProps) => {
       edge={p => <CustomEdge {...p} />}
       nodes={nodes}
       edges={edges}
+      arrow={null}
       maxHeight={paneHeight}
       maxWidth={paneWidth}
       height={paneHeight}
       width={paneWidth}
       direction={direction}
       layoutOptions={layoutOptions}
-      key={direction}
+      key={[direction, colorScheme].join("-")}
       pannable={false}
       zoomable={false}
       animated={false}
